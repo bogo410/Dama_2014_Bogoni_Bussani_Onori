@@ -11,10 +11,10 @@ public class ControlloreCPU {
 	final int MAN = 15;
 	final int MANIND= 20;
 	
-	//per creare la dama
+	//booleano di controllo per creare la dama
 	private boolean damaCreata = false;
 	
-	//livello di difficoltà
+	//livello di difficoltÔøΩ
 	public static int difficolta;
 	
 	private final Scacchiera s;
@@ -119,7 +119,7 @@ public class ControlloreCPU {
 				selezionaCasellaTraccia(pSel,Color.YELLOW);
 			}
 			
-			//se la pedina ha mangiato e può ancora mangiare rimangia
+			//se la pedina ha mangiato e puÔøΩ ancora mangiare rimangia
 			pSel.inizializzaArray();
 			
 		}
@@ -135,11 +135,11 @@ public class ControlloreCPU {
 					}
 				}
 				
-				//Crea la dama rimuovendo la pedina poi crea anche la dama grafica se non è appena stata creata
+				//Crea la dama rimuovendo la pedina poi crea anche la dama grafica se non ÔøΩ appena stata creata
 				if(damaCreata==false){
 					dSel = CPU.creaDama(pSel);
 					s.getPedineGrafiche().add(new DamaGrafica(dSel, s));
-					damaCreata=true; //per sapere che è appena stata creata
+					damaCreata=true; //per sapere che ÔøΩ appena stata creata
 				}
 			}
 	}
@@ -147,7 +147,7 @@ public class ControlloreCPU {
 	//metodo che seleziona la casella del colore specificato per tenere traccia del movimento delle pedine nere
 	private void selezionaCasellaTraccia(Pedina pSel, Color colore){
 
-		//scorre tutte le caselle e evidenzia quella corrispondente alla pedina da muovere così da tener traccia del movimento
+		//scorre tutte le caselle e evidenzia quella corrispondente alla pedina da muovere cosÔøΩ da tener traccia del movimento
 		for(int i = 0; i < 8; i++)
 			for(int j = 0; j < 8; j++)
 					if(caselle[i][j].getX() == pSel.getX() && caselle[i][j].getY() == pSel.getY())
@@ -164,7 +164,7 @@ public class ControlloreCPU {
 			
 			if(pg.getPedina().getX() == xMangiata && pg.getPedina().getY() == yMangiata){
 				
-				//evidenzia la casella in cui è appena stata mangiata una pedina
+				//evidenzia la casella in cui ÔøΩ appena stata mangiata una pedina
 				selezionaCasellaTraccia(pg.getPedina(),Color.MAGENTA);
 				
 				//rimuove la pedina e la pedina grafica avversaria
@@ -181,7 +181,7 @@ public class ControlloreCPU {
 	private void elencoPedine() {
 		//carica nell'elenco le pedine che possono mangiare
 		caricaPossonoMangiare();
-		//se quell'elenco non è vuoto allora carica le mosse di movimento
+		//se quell'elenco non ÔøΩ vuoto allora carica le mosse di movimento
 		if(pedineCheMuovono.isEmpty())
 			caricaPossonoMuovere();
 		
@@ -196,7 +196,7 @@ public class ControlloreCPU {
 		
 	}
 
-	//verifica se la pedina passata può muovere e aumenta i pesi corrispondenti al movimento
+	//verifica se la pedina passata puÔøΩ muovere e aumenta i pesi corrispondenti al movimento
 	private boolean puoMuovere(Pedina p) {
 		boolean faQualcosa = false;
 			
@@ -223,13 +223,13 @@ public class ControlloreCPU {
 	private void caricaPossonoMangiare() {
 		//cicla l'arraylist di pedine e aggiunge le pedine che possono mangiare
 		for(Pedina p: CPU.getSetPedine())
-			//se p può mangiare la carica
+			//se p puÔøΩ mangiare la carica
 			if(puoMangiare(p)){
 				pedineCheMuovono.add(p);
 			}
 	}
 
-	//verifica quando la pedina passata può mangiare e aumenta i pesi corrispondenti alla mangiata
+	//verifica quando la pedina passata puÔøΩ mangiare e aumenta i pesi corrispondenti alla mangiata
 	private boolean puoMangiare(Pedina p) {		
 		
 		boolean faQualcosa = false;
@@ -285,7 +285,7 @@ public class ControlloreCPU {
 			//cicla sulle pedine che possono muovere
 			for(Pedina p: pedineCheMuovono){
 				
-				//se la pedina è vicina al bordo sinistro della scacchiera
+				//se la pedina ÔøΩ vicina al bordo sinistro della scacchiera
 				if( p.getX() >= 5 ){
 					
 					p.bilanciaMossa(0,1);	//aumentiamo di 1 il movimento a sinistra
@@ -294,7 +294,7 @@ public class ControlloreCPU {
 					p.bilanciaMossa(6,1);	//aumentiamo di 1 la mangiata opposta a sinistra
 				}
 				
-				//se la pedina è vicina al bordo destro della scacchiera
+				//se la pedina ÔøΩ vicina al bordo destro della scacchiera
 				if( p.getX() <= 2 ){
 					
 					p.bilanciaMossa(1,1);	//aumentiamo di 1 il movimento a destra
@@ -303,7 +303,7 @@ public class ControlloreCPU {
 					p.bilanciaMossa(7,1);	//aumentiamo di 1 la mangiata opposta a destra
 				}
 				
-				//se la pedina è vicina al bordo avversario della scacchiera
+				//se la pedina ÔøΩ vicina al bordo avversario della scacchiera
 				if( p.getY() >= 5 && !(p instanceof Dama)){
 					
 					//aumenta le mosse in modo da raggiungere la sponda avversaria per creare la dama
@@ -319,7 +319,7 @@ public class ControlloreCPU {
 					p.bilanciaMossa(7,2);	//aumentiamo di 2 la mangiata opposta a destra
 				}
 			
-				//se la pedina nera è una dama e può essere mangiata vengono aumentati i pesi delle sue mosse in modo che si sposti
+				//se la pedina nera ÔøΩ una dama e puÔøΩ essere mangiata vengono aumentati i pesi delle sue mosse in modo che si sposti
 				for(Pedina pAvv : g1.getSetPedine()){
 					if(puoEssereMangiataDama(pAvv)){
 						for(int i=0; i<8; i++)
@@ -332,7 +332,7 @@ public class ControlloreCPU {
 	//valuta il posizionamento delle pedine bianche nella scacchiera	
 	private void valutaPosizionamentoPedineAvversarie() {
 		
-		//Verifica se una delle caselle dell'ultima riga è vuota se è vuota cicla su tutte le pedine che possono muovere e incrementa il movimento verso la casella vuota
+		//Verifica se una delle caselle dell'ultima riga ÔøΩ vuota se ÔøΩ vuota cicla su tutte le pedine che possono muovere e incrementa il movimento verso la casella vuota
 		for(Pedina p: pedineCheMuovono){
 			if(!(p instanceof Dama)){
 				if(casellaVuota(1,7))
@@ -367,7 +367,7 @@ public class ControlloreCPU {
 						p.bilanciaMossa(2,1);	//aumentiamo di 1 la mangiata a sinistra
 					}
 			}
-			//se la pedina selezionata è una dama e le pedine del giocatore1 sono meno di 10 incrementa le mosse verso le altre pedine
+			//se la pedina selezionata ÔøΩ una dama e le pedine del giocatore1 sono meno di 10 incrementa le mosse verso le altre pedine
 			if (p instanceof Dama && (g1.getSetPedine().size() < 9)){
 				for(Pedina pAvv : g1.getSetPedine()){
 					if(p.getX() - pAvv.getX() > 0){
@@ -399,7 +399,7 @@ public class ControlloreCPU {
 			}
 		
 		
-		//se la pedina selezionata è una dama e le pedine del giocatore1 sono meno di 3 incrementa le mosse verso le altre pedine
+		//se la pedina selezionata ÔøΩ una dama e le pedine del giocatore1 sono meno di 3 incrementa le mosse verso le altre pedine
 		if (p instanceof Dama && (g1.getSetPedine().size() < 3)){
 			for(Pedina pAvv : g1.getSetPedine()){
 				if(p.getX() - pAvv.getX() > 0){
@@ -435,41 +435,41 @@ public class ControlloreCPU {
 
 	private void valutaControMosse() {
 		
-		//entra solo se il livello di difficoltà è maggiore di 0, altrimenti la difficoltà si basa solo sulle valutazioni sulle posizioni attuali delle pedine
+		//entra solo se il livello di difficoltÔøΩ ÔøΩ maggiore di 0, altrimenti la difficoltÔøΩ si basa solo sulle valutazioni sulle posizioni attuali delle pedine
 		if(difficolta > 0){
 		
-			//cicla sulle pedine nere che possono muovere e verifica se facendo una determinata mossa vengono mangiate evitando così di farsi mangiare
+			//cicla sulle pedine nere che possono muovere e verifica se facendo una determinata mossa vengono mangiate evitando cosÔøΩ di farsi mangiare
 			for(Pedina p : pedineCheMuovono){
 				
-				//se si trova una pedina bianca sulla stessa diagonale in cui muove oppure sulla diagonale opposta rispetto a cui muove e la può mangiare setta a 5 il movimento a sinistra
+				//se si trova una pedina bianca sulla stessa diagonale in cui muove oppure sulla diagonale opposta rispetto a cui muove e la puÔøΩ mangiare setta a 5 il movimento a sinistra
 				if(casellaVuota(p.getX()+1,p.getY()+1))
 					if( casellaOccupataDaPedinaBianca(p.getX()+2,p.getY()+2) || (casellaOccupataDaPedinaBianca(p.getX(),p.getY()+2) && casellaVuota(p.getX()+2,p.getY())) )
 						p.setMossa(0, 5); //setta a 5(valore basso) il movimento in quella direzione
-				//se si trova una pedina bianca sulla stessa diagonale in cui muove oppure sulla diagonale opposta rispetto a cui muove e la può mangiare setta a 5 il movimento a destra
+				//se si trova una pedina bianca sulla stessa diagonale in cui muove oppure sulla diagonale opposta rispetto a cui muove e la puÔøΩ mangiare setta a 5 il movimento a destra
 				if(casellaVuota(p.getX()-1,p.getY()+1))	
 					if( casellaOccupataDaPedinaBianca(p.getX()-2,p.getY()+2) || (casellaOccupataDaPedinaBianca(p.getX(),p.getY()+2) && casellaVuota(p.getX()-2,p.getY())) )
 						p.setMossa(1, 5); //setta a 5(valore basso) il movimento in quella direzione
 			
-				//entra solo se il livello di difficoltà è massimo, altrimenti la difficoltà si basa sulle valutazioni sulle posizioni e solo in parte sull'evitare di farsi mangiare 
+				//entra solo se il livello di difficoltÔøΩ ÔøΩ massimo, altrimenti la difficoltÔøΩ si basa sulle valutazioni sulle posizioni e solo in parte sull'evitare di farsi mangiare 
 				if(difficolta == 2){
 					
 					if(casellaVuota(p.getX(),p.getY()+2)){
-						//se si trova una dama bianca sopra a sinistra e la può mangiare setta a 5 il movimento a sinistra
+						//se si trova una dama bianca sopra a sinistra e la puÔøΩ mangiare setta a 5 il movimento a sinistra
 						if( casellaOccupataDaDamaBianca(p.getX()+2,p.getY()) && casellaVuota(p.getX()+1,p.getY()+1) )
 								p.setMossa(0, 5); //setta a 5(valore basso) il movimento in quella direzione
-						//se si trova una dama bianca sopra a destra e la può mangiare setta a 5 il movimento a destra
+						//se si trova una dama bianca sopra a destra e la puÔøΩ mangiare setta a 5 il movimento a destra
 						if( casellaOccupataDaDamaBianca(p.getX()-2,p.getY()) && casellaVuota(p.getX()-1,p.getY()+1) )
 								p.setMossa(1, 5); //setta a 5(valore basso) il movimento in quella direzione
 					}
 					
-					//se la pedina nera in questione è una dama deve evitare di farsi mangiare anche risalendo la scacchiera in direzione opposta
+					//se la pedina nera in questione ÔøΩ una dama deve evitare di farsi mangiare anche risalendo la scacchiera in direzione opposta
 					if( p instanceof Dama){
 						
-						//se si trova una dama bianca vicino che la può mangiare muovendo indietro a sinistra setta a 5 il movimento indietro a sinistra
+						//se si trova una dama bianca vicino che la puÔøΩ mangiare muovendo indietro a sinistra setta a 5 il movimento indietro a sinistra
 						if(casellaVuota(p.getX()+1,p.getY()-1))
 							if( casellaOccupataDaDamaBianca(p.getX()+2,p.getY()-2) || (casellaOccupataDaDamaBianca(p.getX(),p.getY()-2) && casellaVuota(p.getX()+2,p.getY())) || (casellaOccupataDaDamaBianca(p.getX()+2,p.getY()) && casellaVuota(p.getX(),p.getY()-2)) )
 								p.setMossa(4, 5); //setta a 5(valore basso) il movimento in quella direzione;
-						//se si trova una dama bianca vicino che la può mangiare muovendo indietro a destra setta a 5 il movimento indietro a destra
+						//se si trova una dama bianca vicino che la puÔøΩ mangiare muovendo indietro a destra setta a 5 il movimento indietro a destra
 						if(casellaVuota(p.getX()-1,p.getY()-1))
 							if( casellaOccupataDaDamaBianca(p.getX()-2,p.getY()-2) || (casellaOccupataDaDamaBianca(p.getX(),p.getY()-2) && casellaVuota(p.getX()-2,p.getY())) || (casellaOccupataDaDamaBianca(p.getX()-2,p.getY()) && casellaVuota(p.getX(),p.getY()-2)) )
 								p.setMossa(5, 5); //setta a 5(valore basso) il movimento in quella direzione;
@@ -479,7 +479,7 @@ public class ControlloreCPU {
 		}
 	}
 	
-	//controlla se la casella indicata è occupata da una pedina bianca
+	//controlla se la casella indicata ÔøΩ occupata da una pedina bianca
 	private boolean casellaOccupataDaPedinaBianca(int x, int y){
 		//controlla che si guardi in una casella all'interno della scacchiera
 				if(x>7 || x< 0 || y < 0 || y> 7)
@@ -492,7 +492,7 @@ public class ControlloreCPU {
 				return false;
 	}
 	
-	//controlla se la casella indicata è occupata da una dama bianca
+	//controlla se la casella indicata ÔøΩ occupata da una dama bianca
 	private boolean casellaOccupataDaDamaBianca(int x, int y){
 		//controlla che si guardi in una casella all'interno della scacchiera
 				if(x>7 || x< 0 || y < 0 || y> 7)
@@ -505,7 +505,7 @@ public class ControlloreCPU {
 				return false;
 	}
 	
-	//ritorna true se la dama passata può essere mangiata
+	//ritorna true se la dama passata puÔøΩ essere mangiata
 	private boolean puoEssereMangiataDama(Pedina pBianca) {
 		boolean faQualcosa = false;
 		if(pBianca instanceof Dama){
@@ -535,7 +535,7 @@ public class ControlloreCPU {
 		max=0;
 	}
 	
-	//cambia la difficoltà in base alla scelta del giocatore
+	//cambia la difficoltÔøΩ in base alla scelta del giocatore
 	public void cambiaDifficolta(int nuovaDifficolta){
 		
 		if(nuovaDifficolta == 0)
