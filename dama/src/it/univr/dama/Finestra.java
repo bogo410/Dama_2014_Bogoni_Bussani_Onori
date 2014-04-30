@@ -2,6 +2,10 @@ package it.univr.dama;
 
 import java.awt.BorderLayout;
 import java.awt.Dimension;
+import java.awt.Image;
+import java.awt.Toolkit;
+
+import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
@@ -14,6 +18,7 @@ public class Finestra extends JFrame{
 	private Scacchiera s;
 	private Gioco game;
 	private MenuListener menuListener;
+	private Dimension schermo = Toolkit.getDefaultToolkit().getScreenSize();
 	
 	//Menu'
 	private JMenuBar barraMenu;
@@ -86,6 +91,9 @@ public class Finestra extends JFrame{
 		//aggiunge il pannello di supporto
 		add(pS, BorderLayout.SOUTH);
 		
+		//mette la finestra al centro dello schermo
+		this.setLocation((schermo.width-WIDTH)/2,(schermo.height-HEIGHT)/2);
+
 		//setta le dimensioni in modo corretto(adatta i pannelli nella finestra)
 		pack();
 		this.setResizable(false);

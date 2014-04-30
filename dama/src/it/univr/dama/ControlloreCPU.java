@@ -11,6 +11,9 @@ public class ControlloreCPU {
 	final int MAN = 15;
 	final int MANIND= 20;
 	
+	//per creare la dama
+	private boolean damaCreata = false;
+	
 	//livello di difficoltà
 	public static int difficolta;
 	
@@ -37,6 +40,7 @@ public class ControlloreCPU {
 
 	//funzione che da il via a tutti i metodi del controlloreCPU
 	public void attiva() {
+		damaCreata = false;
 		
 		//mette max a 0
 		azzeraMax();
@@ -67,8 +71,9 @@ public class ControlloreCPU {
 	}
 
 	//esegue la mossa in base al massimo peso tra le mosse delle pedine della CPU
-	private Pedina eseguiMossa() {
+	private void eseguiMossa() {
 		Pedina pSel = null;
+		Dama dSel = null;
 		max = -1;
 		
 		for(Pedina p: pedineCheMuovono){
@@ -124,16 +129,19 @@ public class ControlloreCPU {
 				//scorre sull'arrayList di pedinegrafiche ed elimina la pedina grafica corrispondente
 				for(PedinaGrafica pg : s.getPedineGrafiche()){
 					
-					if(pg.getPedina().getX() == pSel.getX() && pg.getPedina().getY() == pSel.getY()){
+					if(pg.getPedina().getX() == pSel.getX() && pg.getPedina().getY() == pSel.getY() && damaCreata==false){
 						s.getPedineGrafiche().remove(pg);
 						break;
 					}
 				}
 				
-				//Crea la dama rimuovendo la pedina poi crea anche la dama grafica, infine passa il turno
-				s.getPedineGrafiche().add(new DamaGrafica(CPU.creaDama(pSel), s));
+				//Crea la dama rimuovendo la pedina poi crea anche la dama grafica se non è appena stata creata
+				if(damaCreata==false){
+					dSel = CPU.creaDama(pSel);
+					s.getPedineGrafiche().add(new DamaGrafica(dSel, s));
+					damaCreata=true; //per sapere che è appena stata creata
+				}
 			}
-		return pSel;
 	}
 	
 	//metodo che seleziona la casella del colore specificato per tenere traccia del movimento delle pedine nere

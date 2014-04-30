@@ -67,7 +67,6 @@ public class Pedina {
 			pesiMosse[indice] = peso;
 			if (pesiMosse[indice] < 0)
 				pesiMosse[indice] = 0;
-			System.out.println("Mossa n: "+ indice +"     Peso: "+ peso);
 			
 		}
 		
@@ -124,7 +123,6 @@ public class Pedina {
 					indiceMax = i;
 				}
 			}
-			System.out.println(""+ max);
 			return max;
 		}
 		

@@ -86,8 +86,10 @@ public class Mouse implements MouseListener{
 			}
 			
 			//Crea la dama rimuovendo la pedina e con la dama ritornata ne crea la dama grafica e infine passa il turno
-			pedineGrafiche.add(new DamaGrafica(g1.creaDama(pSel), s));
-			return false;
+			if(pSel.getColore() == Color.WHITE){
+				pedineGrafiche.add(new DamaGrafica(g1.creaDama(pSel), s));
+				return false;
+			}
 		}
 	return true;
 	}
